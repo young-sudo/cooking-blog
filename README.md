@@ -29,7 +29,7 @@ A minimalist recipe site built with [Jekyll](https://jekyllrb.com/) and hosted o
 |------------|----------|-------|
 | `title`    | yes      | Shown on the card and the recipe page. Diacritics (Ż, ó, …) are fine here. |
 | `category` | yes      | Must be exactly one of `savory`, `sweet` or `drinks`. |
-| `date`     | yes      | `YYYY-MM-DD`. Category pages list the newest recipes first. |
+| `date`     | no       | `YYYY-MM-DD`. Just for your records; it isn't shown or used for sorting. |
 | `image`    | no       | Path to the photo. Without one, a placeholder is shown. |
 | `time`     | no       | Free text, e.g. `1 h 15 min`. |
 | `servings` | no       | A number. |
@@ -98,7 +98,7 @@ _recipes/             one Markdown file per recipe
 _layouts/             page templates (default, category, recipe)
 _includes/            header and polaroid card snippets
 assets/css/style.css  all styling (colours and font at the top)
-assets/js/sort.js     A–Z sort toggle on category pages
+assets/js/sort.js     random order on load + A–Z / shuffle toggle on category pages
 assets/img/recipes/   recipe photos
 ```
 
