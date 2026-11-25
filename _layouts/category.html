@@ -2,12 +2,16 @@
 layout: default
 ---
 {%- assign cat = site.data.categories | where: "key", page.category | first -%}
-{%- assign dishes = site.recipes | where: "category", page.category | sort: "date" | reverse -%}
+{%- assign dishes = site.recipes | where: "category", page.category -%}
 <section class="category-page" style="--accent: {{ cat.color }}">
   <div class="category-bar">
     <h2 class="category-heading"><span class="shape shape-{{ cat.shape }}" aria-hidden="true"></span>{{ page.title }}</h2>
     {% if dishes.size > 1 %}
-    <button type="button" class="sort-toggle" aria-pressed="false">Sort A–Z</button>
+    <div class="order-switch">
+      <span class="order-label is-active" data-mode="shuffle">Shuffle</span>
+      <button type="button" class="switch" role="switch" aria-checked="false" aria-label="Sort A–Z"><span class="switch-knob"></span></button>
+      <span class="order-label" data-mode="alpha">A–Z</span>
+    </div>
     {% endif %}
   </div>
 

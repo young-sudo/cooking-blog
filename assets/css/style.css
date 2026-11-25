@@ -152,23 +152,45 @@ a.card:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 .category-heading .shape,
 .recipe-title .shape { width: 22px; height: 22px; }
 
-.sort-toggle {
-  font: inherit;
+/* Shuffle [■—] A–Z switch: square track, square knob in the category colour */
+.order-switch {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
   font-size: 0.95rem;
-  color: var(--ink);
-  background: var(--card);
+  user-select: none;
+}
+html:not(.js) .order-switch { display: none; }
+.order-label {
+  color: var(--muted);
+  cursor: pointer;
+  transition: color 150ms ease;
+}
+.order-label.is-active { color: var(--ink); font-weight: 600; }
+.switch {
+  position: relative;
+  width: 46px;
+  height: 24px;
+  padding: 0;
   border: 1px solid var(--ink);
   border-radius: 0;
-  padding: 0.4rem 1rem;
+  background: var(--card);
   cursor: pointer;
-  transition: background 150ms ease, color 150ms ease;
 }
-.sort-toggle:hover { background: #f0f0f0; }
-.sort-toggle[aria-pressed="true"] {
-  background: var(--ink);
-  color: var(--card);
+.switch-knob {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 16px;
+  height: 16px;
+  background: var(--accent);
+  transition: transform 150ms ease;
 }
-.sort-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.switch[aria-checked="true"] .switch-knob { transform: translateX(22px); }
+.switch:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) {
+  .switch-knob, .order-label { transition: none; }
+}
 
 .empty { color: var(--muted); }
 
@@ -178,6 +200,8 @@ a.card:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 2rem;
 }
+/* Hidden until sort.js has shuffled it, so cards don't visibly jump. Shown as-is without JS. */
+.js .dish-grid:not(.is-ready) { visibility: hidden; }
 .dish-card {
   padding: 12px 12px 0;
 }
