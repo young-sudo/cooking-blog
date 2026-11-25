@@ -1,0 +1,5 @@
+{%- assign dish = include.dish -%}
+<a class="card dish-card" href="{{ dish.url | relative_url }}" data-title="{{ dish.title | escape }}">
+  <img src="{{ dish.image | default: '/assets/img/placeholder.svg' | relative_url }}" alt="{{ dish.title | escape }}" loading="lazy">
+  <span class="dish-name">{{ dish.title }}</span>
+</a>

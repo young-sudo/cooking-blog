@@ -1,0 +1,11 @@
+---
+layout: default
+---
+<nav class="category-grid" aria-label="Categories">
+  {% for cat in site.data.categories %}
+  <a class="card category-card shape-{{ cat.shape }}" href="{{ '/' | append: cat.key | append: '/' | relative_url }}" style="--accent: {{ cat.color }}">
+    <span class="category-name">{{ cat.name }}</span>
+    <span class="category-desc">{{ cat.description }}</span>
+  </a>
+  {% endfor %}
+</nav>

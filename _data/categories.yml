@@ -1,0 +1,15 @@
+- key: savory
+  name: Savory
+  color: "#e63b2e"
+  shape: square
+  description: Mains, soups and everything salty.
+- key: sweet
+  name: Sweet
+  color: "#f2c21b"
+  shape: circle
+  description: Cakes, cookies and desserts.
+- key: drinks
+  name: Drinks
+  color: "#1f5fd1"
+  shape: triangle
+  description: Hot, cold and in between.

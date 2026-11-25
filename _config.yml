@@ -1,0 +1,21 @@
+title: Cooking Blog
+description: Simple recipes, simply presented.
+baseurl: "/cooking-blog"
+url: "https://young-sudo.github.io"
+
+collections:
+  recipes:
+    output: true
+    permalink: /:collection/:name/
+
+defaults:
+  - scope:
+      type: recipes
+    values:
+      layout: recipe
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor

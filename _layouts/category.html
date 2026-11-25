@@ -1,0 +1,22 @@
+---
+layout: default
+---
+{%- assign cat = site.data.categories | where: "key", page.category | first -%}
+{%- assign dishes = site.recipes | where: "category", page.category | sort: "date" | reverse -%}
+<section class="category-page" style="--accent: {{ cat.color }}">
+  <div class="category-bar">
+    <h2 class="category-heading"><span class="shape shape-{{ cat.shape }}" aria-hidden="true"></span>{{ page.title }}</h2>
+    {% if dishes.size > 1 %}
+    <button type="button" class="sort-toggle" aria-pressed="false">Sort A–Z</button>
+    {% endif %}
+  </div>
+
+  {% if dishes.size > 0 %}
+  <div class="dish-grid">
+    {% for dish in dishes %}{% include dish-card.html dish=dish %}{% endfor %}
+  </div>
+  {% else %}
+  <p class="empty">No recipes here yet.</p>
+  {% endif %}
+</section>
+<script src="{{ '/assets/js/sort.js' | relative_url }}" defer></script>

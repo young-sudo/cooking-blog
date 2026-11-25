@@ -1,0 +1,24 @@
+---
+layout: default
+---
+{%- assign cat = site.data.categories | where: "key", page.category | first -%}
+<article class="recipe" style="--accent: {{ cat.color }}">
+  <a class="back-link" href="{{ '/' | append: page.category | append: '/' | relative_url }}">← {{ cat.name }}</a>
+
+  <div class="recipe-photo card">
+    <img src="{{ page.image | default: '/assets/img/placeholder.svg' | relative_url }}" alt="{{ page.title | escape }}">
+  </div>
+
+  <h2 class="recipe-title"><span class="shape shape-{{ cat.shape }}" aria-hidden="true"></span>{{ page.title }}</h2>
+
+  {% if page.time or page.servings %}
+  <p class="recipe-meta">
+    {% if page.time %}<span>{{ page.time }}</span>{% endif %}
+    {% if page.servings %}<span>{{ page.servings }} servings</span>{% endif %}
+  </p>
+  {% endif %}
+
+  <div class="recipe-body">
+    {{ content }}
+  </div>
+</article>
